@@ -1,24 +1,44 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@*CSS STYLE*@
+<style type="text/css">
+    .bgcolor {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bgimg {
+        background-image: url('../Imagens/MESA2.png');
+        background-repeat: no-repeat;
+        background-size: 300px 100px
+    }
+
+    h1 {
+        background-color: #000000;
+        font-size: 85px;
+        font-family: Deutsche Zierschrift;
+        text-align: center;
+        color: white;
+    }
+
+    .p1 {
+        background-color: #000000;
+        font-size: 40px;
+        font-family: Bastarda;
+        text-align: center;
+        color: whitesmoke;
+        font-style: oblique;
+    }
+</style>
+
+<div>
+
+    <h1> MESA RPG</h1>
+    <p class="p1">Sejam Bem Vindos! </p>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+<div class="bgcolor">
+        <img src="~/Imagens/MESA2.png" width="800" height="650
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
