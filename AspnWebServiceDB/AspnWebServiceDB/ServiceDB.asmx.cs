@@ -26,14 +26,14 @@ namespace AspnWebServiceDB
         }
 
         [WebMethod]
-        public DataTable GetUser(string nomeUser)
+        public DataTable GetUserName(string nomeUser)
         {
             DataTable dt = new USER_BLL().ObterUser(nomeUser);
             return dt;
         }
 
         [WebMethod]
-        public DataTable GetUser(int cdUser)
+        public DataTable GetUserCD(int cdUser)
         {
             DataTable dt = new USER_BLL().ObterUser(cdUser);
             return dt;
@@ -55,11 +55,6 @@ namespace AspnWebServiceDB
         public void UpdateUser(TB_USER objUser)
         {
             new USER_BLL().UpdateUser(objUser);
-        }
-
-        private object USER_BLL()
-        {
-            throw new NotImplementedException();
         }
     }
 }
