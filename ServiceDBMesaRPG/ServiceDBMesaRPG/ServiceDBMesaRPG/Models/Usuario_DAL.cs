@@ -70,7 +70,7 @@ namespace ServiceDBMesaRPG.Models
             StringBuilder sb = new StringBuilder();
             sb.Append("DELETE FROM TB_USER ");
             sb.Append("WHERE CD_USER = '" + cdUser + "' ");
-            new DatabaseHelper().ExecuteNonQuery(sb);
+            new DatabaseHelper().ExecuteScalar(sb);
         }
 
         public List<Usuario>ListaUsuario(DataTable dt)
@@ -84,20 +84,6 @@ namespace ServiceDBMesaRPG.Models
                 user.DS_EMAIL = dt.Rows[i]["DS_EMAIL"].ToString();
                 USER.Add(user);
             }
-
-
-            //while (dr.Read())
-            //{
-            //    USER = new List<Usuario>();
-            //    for (int i = 0; i < dr.FieldCount; i++)
-            //    {
-            //        Usuario usuario = new Usuario();
-            //        usuario.CD_USER = Convert.ToInt32(dr["CD_USER"]);
-            //        usuario.NM_USER = (dr["NM_USER"]).ToString();
-            //        usuario.DS_EMAIL = (dr["DS_EMAIL"]).ToString();
-            //        USER.Add(usuario);
-            //    }               
-            //}
             return USER;
         }
 
