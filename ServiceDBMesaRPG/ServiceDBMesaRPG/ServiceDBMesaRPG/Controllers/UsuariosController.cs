@@ -19,13 +19,14 @@ namespace ServiceDBMesaRPG.Contollers
         }
 
         // GET: api/Usuario
-        [HttpGet]
+        [HttpGet()]
         public IEnumerable<Usuario> List()
         {
             return _usuarioRepositorio.All;
         }
 
         // GET: api/Usuario/5
+        [HttpGet()]
         public Usuario GetUsuario(int CD)
         {
             var usuario = _usuarioRepositorio.Find(CD);
@@ -37,6 +38,7 @@ namespace ServiceDBMesaRPG.Contollers
         }
 
         // GET: api/Usuario/5
+        [HttpGet()]
         public Usuario GetUsuario(string Nome)
         {
             var usuario = _usuarioRepositorio.FindName(Nome);
@@ -48,6 +50,7 @@ namespace ServiceDBMesaRPG.Contollers
         }
 
         // GET: api/Usuario/5
+        [HttpGet()]
         public Usuario GetUsuarioEmail(string Email)
         {
             var usuario = _usuarioRepositorio.FindEmail(Email);
@@ -59,21 +62,21 @@ namespace ServiceDBMesaRPG.Contollers
         }
 
         // POST: api/Usuario
-        [HttpPost]
+        [HttpPost()]
         public void Post([FromBody]Usuario usuario)
         {
             _usuarioRepositorio.Insert(usuario);
         }
 
         // PUT: api/Usuario/5
-        [HttpPut]
+        [HttpPut()]
         public void Put([FromBody]Usuario usuario)
         {
             _usuarioRepositorio.Update(usuario);
         }
 
         // DELETE: api/Usuario/5
-        [HttpDelete]
+        [HttpDelete()]
         public void Delete([FromBody]Usuario usuario)
         {
             _usuarioRepositorio.Delete(usuario.CD_USER);

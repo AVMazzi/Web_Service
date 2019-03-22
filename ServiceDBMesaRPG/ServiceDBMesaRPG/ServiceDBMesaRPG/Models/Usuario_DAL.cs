@@ -69,7 +69,7 @@ namespace ServiceDBMesaRPG.Models
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("DELETE FROM TB_USER ");
-            sb.Append("WHERE CD_USER = " + cdUser + " ");
+            sb.Append("WHERE CD_USER = '" + cdUser + "' ");
             new DatabaseHelper().ExecuteNonQuery(sb);
         }
 
