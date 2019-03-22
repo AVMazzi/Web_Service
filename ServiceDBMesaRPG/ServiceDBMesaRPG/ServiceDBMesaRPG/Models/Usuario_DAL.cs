@@ -9,41 +9,38 @@ namespace ServiceDBMesaRPG.Models
 {
     public class Usuario_DAL
     {
-        public IDataReader ObterUsuario(int cdUser)
+        public DataTable ObterUsuario(int cdUser)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT* FROM TB_USER USUARIO ");
-            sb.Append("WHERE USUARIO.CD_USER");
-            sb.Append(cdUser);
-            IDataReader dr = new DatabaseHelper().GetDataReader(sb);
+            sb.Append("SELECT * FROM TB_USER  ");
+            sb.Append("WHERE CD_USER ='"+cdUser+"'");
+            DataTable dr = new DatabaseHelper().GetDataTable(sb);
             return dr;
         }
 
-        public IDataReader ObterUsuario(string nomeUser)
+        public DataTable ObterUsuario(string nomeUser)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT* FROM TB_USER USUARIO ");
-            sb.Append("WHERE USUARIO.CD_USER");
-            sb.Append(nomeUser);
-            IDataReader dr = new DatabaseHelper().GetDataReader(sb);
+            sb.Append("SELECT * FROM TB_USER ");
+            sb.Append("WHERE NM_USER = '"+nomeUser+"'");
+            DataTable dr = new DatabaseHelper().GetDataTable(sb);
             return dr;
         }
 
-        public IDataReader ObterUsuarioPorEmail(string email)
+        public DataTable ObterUsuarioPorEmail(string email)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT* FROM TB_USER USUARIO ");
-            sb.Append("WHERE USUARIO.CD_USER");
-            sb.Append(email);
-            IDataReader dr = new DatabaseHelper().GetDataReader(sb);
+            sb.Append("SELECT * FROM TB_USER ");
+            sb.Append("WHERE DS_EMAIL = '"+email+"'");
+            DataTable dr = new DatabaseHelper().GetDataTable(sb);
             return dr;
         }
 
-        public IDataReader ObterUsuario()
+        public DataTable ObterUsuario()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT* FROM TB_USER USUARIO ");
-            IDataReader dr = new DatabaseHelper().GetDataReader(sb);
+            sb.Append("SELECT* FROM TB_USER");
+            DataTable dr = new DatabaseHelper().GetDataTable(sb);
             return dr;
         }
 
@@ -76,31 +73,41 @@ namespace ServiceDBMesaRPG.Models
             new DatabaseHelper().ExecuteNonQuery(sb);
         }
 
-        public List<Usuario>ListaUsuario(IDataReader dr)
+        public List<Usuario>ListaUsuario(DataTable dt)
         {
             List<Usuario> USER = new List<Usuario>();
-            while (dr.Read())
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                USER = new List<Usuario>();
-                for (int i = 0; i < dr.FieldCount; i++)
-                {
-                    Usuario usuario = new Usuario();
-                    usuario.CD_USER = Convert.ToInt32(dr["CD_USER"]);
-                    usuario.NM_USER = (dr["NM_USER"]).ToString();
-                    usuario.DS_EMAIL = (dr["DS_EMAIL"]).ToString();
-                    USER.Add(usuario);
-                }               
+                Usuario user = new Usuario();
+                user.CD_USER = Convert.ToInt32(dt.Rows[i]["CD_USER"]);
+                user.NM_USER = dt.Rows[i]["NM_USER"].ToString();
+                user.DS_EMAIL = dt.Rows[i]["DS_EMAIL"].ToString();
+                USER.Add(user);
             }
+
+
+            //while (dr.Read())
+            //{
+            //    USER = new List<Usuario>();
+            //    for (int i = 0; i < dr.FieldCount; i++)
+            //    {
+            //        Usuario usuario = new Usuario();
+            //        usuario.CD_USER = Convert.ToInt32(dr["CD_USER"]);
+            //        usuario.NM_USER = (dr["NM_USER"]).ToString();
+            //        usuario.DS_EMAIL = (dr["DS_EMAIL"]).ToString();
+            //        USER.Add(usuario);
+            //    }               
+            //}
             return USER;
         }
 
-        public Usuario CriarUsuario(IDataReader dr)
+        public Usuario CriarUsuario(DataTable dt)
         {
-            Usuario usuario = new Usuario();
-            usuario.CD_USER = Convert.ToInt32(dr["CD_USER"]);
-            usuario.NM_USER = (dr["NM_USER"]).ToString();
-            usuario.DS_EMAIL = (dr["DS_EMAIL"]).ToString();
-            return usuario;
+            Usuario user = new Usuario();
+            user.CD_USER = Convert.ToInt32(dt.Rows[0]["CD_USER"]);
+            user.NM_USER = dt.Rows[0]["NM_USER"].ToString();
+            user.DS_EMAIL = dt.Rows[0]["DS_EMAIL"].ToString();
+            return user;
         }
     }
 }

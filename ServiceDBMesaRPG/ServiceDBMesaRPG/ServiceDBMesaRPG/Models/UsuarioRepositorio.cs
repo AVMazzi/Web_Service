@@ -10,7 +10,7 @@ namespace ServiceDBMesaRPG.Models
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
         private List<Usuario> _usuarios;
-        private IDataReader dr;
+        private DataTable dt;
         private Usuario _usuario;
         public UsuarioRepositorio()
         {
@@ -19,8 +19,8 @@ namespace ServiceDBMesaRPG.Models
 
         private void InicializaDados()
         {
-            dr = new Usuario_DAL().ObterUsuario();
-            _usuarios = new Usuario_DAL().ListaUsuario(dr);
+            dt = new Usuario_DAL().ObterUsuario();
+            _usuarios =  new Usuario_DAL().ListaUsuario(dt); ;
         }
 
         public IEnumerable<Usuario> All
@@ -33,20 +33,20 @@ namespace ServiceDBMesaRPG.Models
 
         public Usuario Find(int CD)
         {
-            dr = new Usuario_DAL().ObterUsuario(CD);
-            _usuario = new Usuario_DAL().CriarUsuario(dr);
+            dt = new Usuario_DAL().ObterUsuario(CD);
+            _usuario = new Usuario_DAL().CriarUsuario(dt);
             return _usuario;
         }
         public Usuario FindEmail(string email)
         {
-            dr = new Usuario_DAL().ObterUsuarioPorEmail(email);
-            _usuario = new Usuario_DAL().CriarUsuario(dr);
+            dt = new Usuario_DAL().ObterUsuarioPorEmail(email);
+            _usuario = new Usuario_DAL().CriarUsuario(dt);
             return _usuario;
         }
         public Usuario FindName(string nome)
         {
-            dr = new Usuario_DAL().ObterUsuario(nome);
-            _usuario = new Usuario_DAL().CriarUsuario(dr);
+            dt = new Usuario_DAL().ObterUsuario(nome);
+            _usuario = new Usuario_DAL().CriarUsuario(dt);
             return _usuario;
         }
         public void Insert(Usuario usuario)
