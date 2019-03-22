@@ -70,13 +70,15 @@ namespace ServiceDBMesaRPG.Contollers
 
         
         [HttpPut()]
-        public void Put(int CD,[FromBody]Usuario usuario)
+        public void Put([FromBody]Usuario usuario)
         {
-            usuario.CD_USER = CD;
+            //usuario.CD_USER = Cd;
             _usuarioRepositorio.Update(usuario);
         }
 
-        
+
+        //[Route("api/usuarios/{fileId:int}")]
+        //[AcceptVerbs("DELETE")]
         [HttpDelete()]
         public void Delete(int Cd)
         {

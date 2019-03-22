@@ -59,7 +59,7 @@ namespace ServiceDBMesaRPG.Models
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE TB_USER ");
             sb.Append("SET[NM_USER] = '" + objUser.NM_USER + "',  ");
-            sb.Append("([DS_EMAIL] = '" + objUser.DS_EMAIL + "')");
+            sb.Append("([DS_EMAIL] = '" + objUser.DS_EMAIL + "') ");
             sb.Append("WHERE CD_USER = '" + objUser.CD_USER + "' ");
 
             new DatabaseHelper().ExecuteScalar(sb);
