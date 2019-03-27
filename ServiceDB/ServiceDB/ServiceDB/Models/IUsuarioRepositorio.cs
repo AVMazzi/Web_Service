@@ -12,6 +12,7 @@ namespace ServiceDB.Models
         Usuario Find(int CD);
         Usuario FindEmail(string email);
         Usuario FindName(string nome);
+        bool FindLogin(Usuario user);
         void Insert(Usuario usuario);
         void Update(Usuario usuario);
         void Delete(int CD);

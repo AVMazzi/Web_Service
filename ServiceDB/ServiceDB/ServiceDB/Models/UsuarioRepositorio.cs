@@ -48,6 +48,20 @@ namespace ServiceDB.Models
             _usuario = new Usuario_DAL().CriarUsuario(dr);
             return _usuario;
         }
+
+        public bool FindLogin(Usuario user)
+        {
+            dr = new Usuario_DAL().ObterLogin(user);
+            if (dr.FieldCount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public void Insert(Usuario usuario)
         {
             new Usuario_DAL().SaveUser(usuario);
