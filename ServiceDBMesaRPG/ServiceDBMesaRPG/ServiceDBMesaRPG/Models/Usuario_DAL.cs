@@ -47,8 +47,8 @@ namespace ServiceDBMesaRPG.Models
         public DataTable ObterLogin(Usuario usuario)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT* FROM USUARIO ");
-            sb.Append("WHERE DS_EMAIL = '" + usuario.DS_EMAIL + "' OR NM_USUARIO = '" + usuario.NM_USUARIO + "' ");
+            sb.Append("SELECT* FROM TB_USUARIO ");
+            sb.Append("WHERE (DS_EMAIL = '" + usuario.DS_EMAIL + "' OR NM_USUARIO = '" + usuario.NM_USUARIO + "') ");
             sb.Append("AND DS_SENHA = '" + usuario.DS_SENHA + "'");
             DataTable dr = new DatabaseHelper().GetDataTable(sb);
             return dr;
