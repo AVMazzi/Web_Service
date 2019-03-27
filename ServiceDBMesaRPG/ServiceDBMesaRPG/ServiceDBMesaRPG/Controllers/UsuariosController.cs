@@ -49,7 +49,14 @@ namespace ServiceDBMesaRPG.Contollers
             return usuario;
         }
 
-       
+        [HttpGet()]
+        public int GetUsuario(string usuario, string senha)
+        {
+            var _usuario = _usuarioRepositorio.FindLogin(usuario, senha);
+            
+            return _usuario;
+        }
+
         [HttpGet()]
         public Usuario GetUsuarioEmail(string Email)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-;
+
 
 namespace ServiceDB.Models
 {
@@ -27,10 +27,13 @@ namespace ServiceDB.Models
         {
             get
             {
-                return _usuarios
+                return _usuarios;
             }
         }
-       public Usuario Find(int CD)
+
+        IEnumerable<Usuario> IUsuarioRepositorio.All => throw new NotImplementedException();
+
+        public Usuario Find(int CD)
         {
             dr = new Usuario_DAL().ObterUsuario(CD);
             _usuario = new Usuario_DAL().CriarUsuario(dr);
@@ -73,6 +76,41 @@ namespace ServiceDB.Models
         public void Delete(int CD)
         {
             new Usuario_DAL().DeleteUser(CD);
+        }
+
+        Usuario IUsuarioRepositorio.Find(int CD)
+        {
+            throw new NotImplementedException();
+        }
+
+        Usuario IUsuarioRepositorio.FindEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        Usuario IUsuarioRepositorio.FindName(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IUsuarioRepositorio.FindLogin(Usuario user)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IUsuarioRepositorio.Insert(Usuario usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IUsuarioRepositorio.Update(Usuario usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IUsuarioRepositorio.Delete(int CD)
+        {
+            throw new NotImplementedException();
         }
     }
 }

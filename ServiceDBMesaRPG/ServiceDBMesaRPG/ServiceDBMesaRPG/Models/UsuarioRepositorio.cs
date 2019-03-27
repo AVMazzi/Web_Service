@@ -49,6 +49,23 @@ namespace ServiceDBMesaRPG.Models
             _usuario = new Usuario_DAL().CriarUsuario(dt);
             return _usuario;
         }
+
+        public int FindLogin(string usuario, string senha)
+        {
+            Usuario _usuario = new Usuario();
+            _usuario.DS_EMAIL = usuario;
+            _usuario.NM_USUARIO = usuario;
+            _usuario.DS_SENHA = senha;
+            dt = new Usuario_DAL().ObterLogin(_usuario);
+            if (dt.Rows.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public void Insert(Usuario usuario)
         {
             new Usuario_DAL().SaveUser(usuario);

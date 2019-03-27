@@ -12,6 +12,7 @@ namespace ServiceDBMesaRPG.Models
         Usuario Find(int CD);
         Usuario FindEmail(string email);
         Usuario FindName(string nome);
+        int FindLogin(string usuario, string senha);
         void Insert(Usuario usuario);
         void Update(Usuario usuario);
         void Delete(int CD);
